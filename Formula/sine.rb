@@ -8,8 +8,8 @@ class Sine < Formula
   depends_on :macos => :sonoma
 
   def install
-    cd "sine-stable" do
-      libexec.install Dir["*"]
+    (buildpath/"sine-stable").each_child do |f|
+      libexec.install f
     end
     bin.install_symlink libexec/"bin/sine"
     bin.install_symlink libexec/"bin/wineserver"
